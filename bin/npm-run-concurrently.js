@@ -2,6 +2,7 @@
 
 const cp = require("child_process")
 const fs = require("fs/promises")
+const os = require("os")
 
 const VERSION = "1.0.0"
 
@@ -14,6 +15,8 @@ const helpText = () => (
   + "USAGE:\n"
   + "    npx run-concurrently [SCRIPTS...]\n"
 )
+
+const NPM_COMMAND = os.platform() === "win32" ? "npm.cmd" : "npm"
 
 // Options
 let verbose = false
@@ -98,7 +101,7 @@ const main = async () => {
   process.once("SIGTERM", onSignal)
 
   const runScript = (script, index) => new Promise((resolve, reject) => {
-    const p = cp.spawn("npm", ["run", script], { stdio: "inherit" })
+    const p = cp.spawn(NPM_COMMAND, ["run", script], { stdio: "inherit" })
     subprocessList[index] = p
 
     const label = `${script}#${index}`
