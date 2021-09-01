@@ -1,0 +1,11 @@
+{
+  "name": "run-concurrently",
+  "version": "1.0.0",
+  "description": "Run npm scripts concurrently. (Minimal, zero deps.)",
+  "author": "vain0x <vainzerox@gmail.com>",
+  "license": "CC0-1.0",
+  "main": "bin/npm-run-concurrently.js",
+  "bin": {
+    "npm-run-concurrently": "bin/npm-run-concurrently.js"
+  }
+}
